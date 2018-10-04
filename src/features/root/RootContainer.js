@@ -1,5 +1,5 @@
 import React from "react";
-import LoginScreen from "../login/LoginScreen";
+import LoginScreen from "../login/LoginScreen"
 import { Switch } from "react-router-dom";
 import LoggedInContainer from "./LoggedInContainer";
 import ConditionalRoute from "../shared/ConditionalRoute";
@@ -12,8 +12,15 @@ class RootContainer extends React.Component {
     };
   }
 
-  login = ({ user, password }) =>
-    this.setState({ session: { user, token: "X" } });
+  login = ({ userName, password }) => {
+
+    if (userName === "" || password === "") {
+      return;
+    }
+
+    this.setState({ session: { userName, token: "X" } });
+  }
+
 
   logout = () => this.setState({ session: null });
 
